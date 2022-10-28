@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FelicaLib.DotNet" Version="1.2.67" />
+    <PackageReference Include="FelicaLib.DotNet" Version="1.2.26" />
     <PackageReference Include="PCSC" Version="6.0.0" />
     <PackageReference Include="PCSC.Iso7816" Version="6.0.0" />
   </ItemGroup>
