@@ -16,6 +16,7 @@ namespace FelicaLib
                     f.Polling((int)SystemCode.Common);
                     Console.WriteLine(f.IDm());
                 }
+                while (true) ;
             }
             catch (Exception ex)
             {
