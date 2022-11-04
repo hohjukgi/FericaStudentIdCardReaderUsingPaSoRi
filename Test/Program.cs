@@ -14,9 +14,7 @@ namespace FelicaLib
             {
                 using (Felica f = new Felica())
                 {
-                    f.Polling((int)SystemCode.Common);
-                    //Console.WriteLine(f.IDm() BitCoverter);
-                    Console.WriteLine(BitConverter.ToString(f.IDm()));
+                    readCard(f);
                 }
                 while (true) ;
             }
@@ -52,7 +50,7 @@ namespace FelicaLib
             Console.Write("\n");
         }
 
-        private void readCard(Felica f)
+        private static void readCard(Felica f)
         {
             int i, j, k;
             f.Polling((int)SystemCode.Any);
