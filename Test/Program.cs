@@ -5,7 +5,7 @@ using FelicaLib;
 
 namespace FelicaLib
 {
-    public class Nanaco
+    class Program
     {
         public static void Main()
         {
