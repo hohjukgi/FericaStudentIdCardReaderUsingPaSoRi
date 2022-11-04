@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{1E9F26FD-9D11-4238-A06D-F0F3CECF4F8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6C547B14-50E8-4186-B834-D1FE9B10D970}"
+	ProjectSection(SolutionItems) = preProject
+		FelicaFunc.cs = FelicaFunc.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
