@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using FelicaLib;
 using static FelicaLib.Felica;
 
@@ -8,19 +9,22 @@ namespace FelicaLib
 {
     class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
-            try
+            while (true)
             {
-                using (Felica f = new Felica())
+                try
                 {
-                    readCard(f);
+                    using (Felica f = new Felica())
+                    {
+                        Console.WriteLine(readCard(f));
+                    }
                 }
-                while (true) ;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                await Task.Delay(500);
             }
         }
 
@@ -61,7 +65,10 @@ namespace FelicaLib
             felicaf2 = f.felica_enum_service(syscode);
 
             byte[] data = f.ReadWithoutEncryption((int)felicaf2.service_code[1], 0);
-            if (data == null) return null;
+            if (data == null)
+            {
+                throw new Exception("カード読み取り失敗");
+            }
 
             List<Byte> vs = new List<Byte>();
 
@@ -79,8 +86,6 @@ namespace FelicaLib
             {
                 studentId += vs[i] & 0x0f;
             }
-
-            Console.Write(studentId);
 
             return studentId;
             
