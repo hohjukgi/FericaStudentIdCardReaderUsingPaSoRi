@@ -50,51 +50,40 @@ namespace FelicaLib
             Console.Write("\n");
         }
 
-        private static void readCard(Felica f)
+        private static string readCard(Felica f)
         {
-            int i, j, k;
             f.Polling((int)SystemCode.Any);
-
-            Console.Write("# IDm: ");
-            Console.Write(BitConverter.ToString(f.IDm()));
-            Console.Write("\n");
-            Console.Write("# PMm: ");
-            Console.Write(BitConverter.ToString(f.PMm()));
-            Console.Write("\n\n");
 
             felicat felicaf2 = new felicat();
             felicat felicaf1 = f.felica_enum_systemcode();
 
-            for (i = 0; i < felicaf1.num_system_code; i++)
+            int syscode = ((felicaf1.system_code[0]) >> 8) & 0xff | ((felicaf1.system_code[0]) << 8) & 0xff00;
+            felicaf2 = f.felica_enum_service(syscode);
+
+            byte[] data = f.ReadWithoutEncryption((int)felicaf2.service_code[1], 0);
+            if (data == null) return null;
+
+            List<Byte> vs = new List<Byte>();
+
+            for(int i = 0; i < data.Length; i++)
             {
-                int syscode = ((felicaf1.system_code[i]) >> 8) & 0xff | ((felicaf1.system_code[i]) << 8) & 0xff00;
-                Console.Write("# System code: {0:x4}\n", syscode);
-                felicaf2 = f.felica_enum_service(syscode);
-
-                Console.Write("# Number of area = {0}\n", felicaf2.num_area_code);
-                for (j = 0; j < felicaf2.num_area_code; j++)
-                {
-                    Console.Write("# Area: {0:x4} - {1:x4}\n", felicaf2.area_code[j], felicaf2.end_service_code[j]);
-                }
-
-                Console.Write("# Number of service code = {0}\n", felicaf2.num_service_code);
-                for (j = 0; j < felicaf2.num_service_code; j++)
-                {
-                    ushort service = felicaf2.service_code[j];
-                    printserviceinfo(service);
-
-                    for (k = 0; k < 255; k++)
-                    {
-                        byte[] data = f.ReadWithoutEncryption((int)felicaf2.service_code[j], k);
-                        if (data == null) break;
-
-                        Console.Write("{0:x4}:{1:x4} ", (int)felicaf2.service_code[j], k);
-                        Console.Write(BitConverter.ToString(data));
-                        Console.Write("\n");
-                    }
-                }
-                Console.Write("\n");
+                vs.Add(data[i]);
             }
+
+            vs.RemoveRange(0, 2);
+            vs.RemoveRange(8, 6);
+
+            string studentId = string.Empty;
+
+            for(int i = 0; i < vs.Count; i++)
+            {
+                studentId += vs[i] & 0x0f;
+            }
+
+            Console.Write(studentId);
+
+            return studentId;
+            
         }
     }
 }
