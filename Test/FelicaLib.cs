@@ -148,5 +148,65 @@ namespace FelicaLib
             }
             return data;
         }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct felicat
+        {
+            public IntPtr p;          /**< PaSoRi ハンドル */
+            public ushort systemcode;  /**< システムコード */
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+            public byte[] IDm;       /**< IDm */
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+            public byte[] PMm;       /**< PMm */
+
+            /* systemcode */
+            public byte num_system_code;       /**< 列挙システムコード数 */
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+            public ushort[] system_code;       /**< 列挙システムコード */
+            /* area/service codes */
+            public byte num_area_code;         /**< エリアコード数 */
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+            public ushort[] area_code;         /**< エリアコード */
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+            public ushort[] end_service_code;  /**< エンドサービスコード */
+            public byte num_service_code;      /**< サービスコード数 */
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
+            public ushort[] service_code;      /**< サービスコード */
+        };
+
+        [DllImport("felicalib.dll", CallingConvention = CallingConvention.Cdecl)]
+        private extern static IntPtr felica_enum_systemcode(IntPtr p);
+        [DllImport("felicalib.dll", CallingConvention = CallingConvention.Cdecl)]
+        private extern static IntPtr felica_enum_service(IntPtr p, ushort systemcode);
+
+        public felicat felica_enum_systemcode()
+        {
+            felica_free(felicap);
+
+            felicap = felica_enum_systemcode(pasorip);
+            if (felicap == IntPtr.Zero)
+            {
+                throw new Exception("カード読み取り失敗");
+            }
+            felicai = (felicat)Marshal.PtrToStructure(felicap, typeof(felicat));
+            return felicai;
+        }
+
+        public felicat felica_enum_service(int systemcode)
+        {
+            felica_free(felicap);
+
+            felicap = felica_enum_service(pasorip, (ushort)systemcode);
+            if (felicap == IntPtr.Zero)
+            {
+                throw new Exception("カード読み取り失敗");
+            }
+            felicai = (felicat)Marshal.PtrToStructure(felicap, typeof(felicat));
+            return felicai;
+        }
+
+        private felicat felicai;
+
+
     }
 }
