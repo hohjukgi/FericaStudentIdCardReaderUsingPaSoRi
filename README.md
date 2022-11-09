@@ -1,10 +1,25 @@
 # name
 Picocon Test/CUI sample
 ## Overview
-PasoriからFerica学生証情報を取り出します
-愛知工科大学の学生証のみ対応しています
+Fericaから学生情報を取り出します。<br>
+[愛知工科大学](https://www.aut.ac.jp/ "愛知工科大学ホームページ")の学生証のみ対応しています
+
+>**注意:**
+>このプログラムを動作させるためには別売のICリーダ<br>
+>PaSoRi [RC-S300](https://www.sony.co.jp/Products/felica/consumer/) が必要です
+
+## Method
+```cs
+string readStudentId(Felica f)
+```
+引数: Ferica情報<br>
+戻り値: 学籍番号(string)
+
 ## Requirement
 - windows 10
+- Visual Studio 2019
+- .NET Core 3.1
 - Pasori
-- Attached files
-[felicalib-0.4.2.zip](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)
+- Fericalib [[元配布ページ]](http://felicalib.tmurakam.org/)
+[[ファイル]](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)
+- [NFCポートソフトウェア](https://www.sony.co.jp/Products/felica/consumer/support/download/nfcportsoftware.html?j-short=fsc_dl)
