@@ -23,3 +23,7 @@ string readStudentId(Felica f)
 - Fericalib [[元配布ページ]](http://felicalib.tmurakam.org/)
 [[ファイル]](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)
 - [NFCポートソフトウェア](https://www.sony.co.jp/Products/felica/consumer/support/download/nfcportsoftware.html?j-short=fsc_dl)
+- NuGetパッケージ: [PCSC 6.0.0](https://www.nuget.org/packages/PCSC/6.0.0?_src=template)
+- NuGetパッケージ: [PCSC.Iso7816 6.0.0](https://www.nuget.org/packages/PCSC.Iso7816/6.0.0?_src=template)
+
+## How to use
