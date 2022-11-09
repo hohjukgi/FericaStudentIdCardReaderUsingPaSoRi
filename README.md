@@ -2,7 +2,7 @@
 Aichi Univercity of Technology(AUT) student id reader/CUI sample
 ## Overview
 Fericaから学生情報を取り出します。<br>
-[愛知工科大学](https://www.aut.ac.jp/ "愛知工科大学ホームページ")の学生証のみ対応しています
+[愛知工科大学](https://www.aut.ac.jp/)の学生証のみ対応しています
 
 >**注意:**
 >このプログラムを動作させるためには別売のICリーダ<br>
