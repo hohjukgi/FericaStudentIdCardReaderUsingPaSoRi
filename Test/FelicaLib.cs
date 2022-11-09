@@ -206,5 +206,6 @@ namespace FelicaLib
         }
 
         private felicat felicai;
+
     }
 }
