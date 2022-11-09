@@ -31,4 +31,17 @@ string readStudentId(Felica f)
 **事前準備**
 1. [NFCポートソフトウェア](https://www.sony.co.jp/Products/felica/consumer/support/download/nfcportsoftware.html?j-short=fsc_dl)のダウンロード・インストール<br>
 2. [Felicalib](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)のダウンロード
-3. ソースファイルのダウンロード
+3. [FelicaFunc.cs](Test/FelicaFunc.cs)のダウンロード
+4. [Felicalib.cs](Test/Felicalib.cs)のダウンロード
+
+**導入手順**
+1. 導入したいソリューションに**事前準備3,4**でダウンロードしたソースファイルを追加する
+2. 導入したいソリューションの実行ファイルがある場所に**事前準備2**でダウンロードしたフォルダ内にある**Felicalib.dll**を入れる
+3. 学籍番号を取得したい部分に以下のコードを挿入する
+```cs
+using (Felica f = new Felica())
+{
+  Console.WriteLine(FericaFunc.readStudentId(f));
+}
+```
+このコードでは学籍番号を取得してコンソールに出力している
