@@ -1,4 +1,4 @@
-# name
+# Name
 Aichi Univercity of Technology(AUT) student id reader/CUI sample
 ## Overview
 Fericaから学生情報を取り出します。<br>
