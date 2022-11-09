@@ -28,3 +28,7 @@ string readStudentId(Felica f)
 - NuGetパッケージ: [PCSC.Iso7816 6.0.0](https://www.nuget.org/packages/PCSC.Iso7816/6.0.0?_src=template)
 
 ## How to use
+**事前準備**
+1. [NFCポートソフトウェア](https://www.sony.co.jp/Products/felica/consumer/support/download/nfcportsoftware.html?j-short=fsc_dl)のダウンロード・インストール<br>
+2. [Felicalib](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)のダウンロード
+3. ソースファイルのダウンロード
