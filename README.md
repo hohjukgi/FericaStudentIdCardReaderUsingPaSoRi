@@ -1,7 +1,7 @@
 # 学生番号読み取りプログラム
 Aichi Univercity of Technology(AUT) student id reader/CUI sample
 ## 概要
-Fericaから学生情報を取り出します。<br>
+Felicaから学生情報を取り出します。<br>
 [愛知工科大学](https://www.aut.ac.jp/)の学生証のみ対応しています
 
 >**注意:**
@@ -21,7 +21,7 @@ string readStudentId(Felica f)
 - Visual Studio 2019
 - .NET Core 3.1
 - PaSoRi RC-S300
-- Fericalib [[元配布ページ]](http://felicalib.tmurakam.org/)
+- Felicalib [[元配布ページ]](http://felicalib.tmurakam.org/)
 [[ダウンロード]](https://github.com/hohjukgi/Test/files/9956930/felicalib-0.4.2.zip)
 - [NFCポートソフトウェア](https://www.sony.co.jp/Products/felica/consumer/support/download/nfcportsoftware.html?j-short=fsc_dl)
 
@@ -122,7 +122,7 @@ private void readCard(Felica f)
     }
 }
 ```
-上記readCardメソッドでFericaカードの情報をダンプしています<br>
+上記readCardメソッドでFelicaカードの情報をダンプしています<br>
 <br>
 この際
 ```cs
